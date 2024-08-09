@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZXing Barcode and QR Code Scanner</title>
+    <style>
+      #video {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" autoplay></video>
+    <p id="result"></p>
+
+    <!-- Load ZXing library -->
+    <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.3/umd/index.min.js"></script>
+    <script>
+      // Initialize ZXing Barcode Scanner
+      const codeReader = new ZXing.BrowserMultiFormatReader()
+      const videoElement = document.getElementById('video')
+      const resultElement = document.getElementById('result')
+
+      // Start scanning
+      function startScanning() {
+        codeReader
+          .decodeFromInputVideoDevice(null, videoElement)
+          .then((result) => {
+            resultElement.textContent = `Result: ${result.text}`
+          })
+          .catch((err) => {
+            console.error(err)
+            resultElement.textContent = `Error: ${err.message}`
+          })
+      }
+
+      // Start the scanner when the page loads
+      window.addEventListener('load', () => {
+        startScanning()
+      })
+    </script>
+  </body>
+</html>
