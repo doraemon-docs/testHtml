@@ -66,7 +66,7 @@
           )
 
           Quagga.onDetected(function (result) {
-            alert(result)
+            alert(JSON.stringify(result))
             const code = result.codeResult.code
             document.getElementById('result').innerText = `Detected barcode: ${code}`
             alert(`Detected barcode: ${code}`)
