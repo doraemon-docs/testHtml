@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>测试视频</title>
+    <title>QuaggaJS Barcode Scanner</title>
   </head>
   <body>
     <div id="interactive" class="viewport"></div>
@@ -47,14 +47,15 @@
                   'upc_e_reader',
                   'i2of5_reader'
                 ]
-              }
+              },
+              locate: true // 定位条形码
             },
             function (err) {
               if (err) {
                 console.error(err)
                 return
               }
-              console.log('QuaggaJS 已启动')
+              alert('QuaggaJS 已启动')
               Quagga.start()
             }
           )
@@ -66,7 +67,6 @@
           })
         })
         .catch(function (err) {
-          alert(2222)
           alert('Error accessing media devices.', err)
         })
     </script>
