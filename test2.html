@@ -35,6 +35,12 @@
                   facingMode: 'environment'
                 }
               },
+              locator: {
+                patchSize: 'medium',
+                halfSample: true
+              },
+              numOfWorkers: 4,
+              frequency: 10,
               decoder: {
                 readers: [
                   'code_128_reader',
@@ -61,9 +67,10 @@
           )
 
           Quagga.onDetected(function (result) {
+            alert(result)
             const code = result.codeResult.code
             document.getElementById('result').innerText = `Detected barcode: ${code}`
-            console.log(`Detected barcode: ${code}`)
+            alert(`Detected barcode: ${code}`)
           })
         })
         .catch(function (err) {
