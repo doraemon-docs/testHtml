@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuaggaJS Barcode Scanner</title>
   </head>
+  <style>
+    .viewport{
+      width: 100%;
+      height: auto;
+    }
+  </style>
   <body>
     <div id="interactive" class="viewport"></div>
     <div id="result"></div>
@@ -30,8 +36,8 @@
                 type: 'LiveStream',
                 target: document.querySelector('#interactive'),
                 constraints: {
-                  width: '100%',
-                  height: 'auto',
+                  // width: 640,
+                  // height: 480,
                   facingMode: 'environment'
                 }
               },
